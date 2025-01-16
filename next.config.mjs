@@ -7,16 +7,22 @@ const nextConfig = {
           headers: [
             {
               key: 'X-Frame-Options',
-              value: 'ALLOWALL'
+              value: 'ALLOW-FROM https://mappingtheborder.com'
             },
             {
               key: 'Content-Security-Policy',
-              value: "frame-ancestors 'self' *.squarespace.com"
+              value: "frame-ancestors 'self' https://mappingtheborder.com *.squarespace.com"
+            },
+            {
+              key: 'Access-Control-Allow-Origin',
+              value: 'https://mappingtheborder.com'
             }
           ],
         },
       ]
-    }
+    },
+    crossOrigin: 'anonymous',
+    output: 'standalone'
   };
   
   export default nextConfig;
