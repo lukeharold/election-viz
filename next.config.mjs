@@ -1,4 +1,22 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
+const nextConfig = {
+    async headers() {
+      return [
+        {
+          source: '/:path*',
+          headers: [
+            {
+              key: 'X-Frame-Options',
+              value: 'ALLOWALL'
+            },
+            {
+              key: 'Content-Security-Policy',
+              value: "frame-ancestors 'self' *.squarespace.com"
+            }
+          ],
+        },
+      ]
+    }
+  };
+  
+  export default nextConfig;
